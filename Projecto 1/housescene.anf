@@ -1,0 +1,705 @@
+<anf>
+    <globals>
+        <drawing mode="fill" shading="gouraud" background="0.0 0.0 0.0 1.0" />
+        <culling face="back" order="ccw" />
+        <lighting doublesided="true" local="true" enabled="true" ambient="0.8 0.8 0.8 1.0" /> 
+    </globals>
+
+    <cameras initial="camera0" >
+        <perspective id="camera0" near="-20.0" far="20.0" angle="110.0" pos="-10.0 15.0 25.0" target="0.0 7.5 15.0" />
+     <!--   <ortho id="camera1" direction="x" near="-10.0" far="40.0" left="-15.0" right="20.0" top="20.0" bottom="-5.0" /> -->
+    </cameras>
+
+    <lights>
+            <light id="light0" type="omni" enabled="true" marker="true" pos="-5.0 15.0 7.5" >
+               <component type="ambient" value="0.6 0.6 0.6 1.0" />
+               <component type="diffuse" value="0.6 0.6 0.6 1.0" />
+               <component type="specular" value="0.6 0.6 0.6 1.0" />
+            </light>
+
+            <light id="light1" type="omni" enabled="false" marker="true" pos="10.0 15.0 25.0" >
+               <component type="ambient" value="0.0 0.0 0.0 1.0" />
+               <component type="diffuse" value="1.0 1.0 1.0 1.0" />
+               <component type="specular" value="0.0 0.0 0.0 0.0" />
+            </light>
+
+            <light id="light2" type="omni" enabled="false" marker="true" pos="10.0 20.0 7.5" >
+               <component type="ambient" value="0.0 0.0 0.0 1.0" />
+               <component type="diffuse" value="0.0 0.0 0.0 0.0" />
+               <component type="specular" value="1.0 1.0 0.0 1.0" />
+            </light>
+
+            <light id="light3" type="spot" enabled="false" marker="true" pos="10.0 15.0 7.5" target="10.0 5.0 15.2" 
+                angle="60.0" exponent="10.0" >                                                
+               <component type="ambient" value="0.0 0.0 0.0 1.0" />                                   
+               <component type="diffuse" value="0.0 0.0 0.0 0.0" />                                   
+               <component type="specular" value="1.0 1.0 0.0 1.0" />                                 
+            </light>                                                                              
+    </lights>
+
+    <textures>       
+          <texture id="basetexture" file="data/base.jpg" texlength_s="5" texlength_t="1" />
+          <texture id="stairstexture" file="data/stairs.jpg" texlength_s="1" texlength_t="1" />
+          <texture id="walltexture" file="data/wall.jpg" texlength_s="3" texlength_t="7" />
+          <texture id="windowtexture" file="data/window.jpg" texlength_s="1" texlength_t="1" />
+          <texture id="windowedgetexture" file="data/windowedge.jpg" texlength_s="1" texlength_t="1" />
+          <texture id="doortexture" file="data/door.jpg" texlength_s="1" texlength_t="1" />
+          <texture id="dooredgetexture" file="data/dooredge.jpg" texlength_s="1" texlength_t="1" />
+          <texture id="rooftexture" file="data/roof.jpg" texlength_s="5" texlength_t="5" />
+    </textures>
+
+    <appearances>
+        <appearance id="base_app" shininess="0.2" textureref="basetexture" >
+               <component type="ambient" value="0.5 0.5 0.5 0.5" />
+               <component type="diffuse" value="0.5 0.5 0.5 0.5" />
+               <component type="specular" value="0.5 0.5 0.5 0.5" />
+        </appearance>
+        <appearance id="stairs_app" shininess="0.2" textureref="stairstexture" >
+               <component type="ambient" value="0.5 0.5 0.5 0.5" />
+               <component type="diffuse" value="0.5 0.5 0.5 0.5" />
+               <component type="specular" value="0.5 0.5 0.5 0.5" />
+        </appearance>
+        <appearance id="walls_app" shininess="0.2" textureref="walltexture" >
+               <component type="ambient" value="0.5 0.5 0.5 0.5" />
+               <component type="diffuse" value="0.5 0.5 0.5 0.5" />
+               <component type="specular" value="0.5 0.5 0.5 0.5" />
+        </appearance>
+        <appearance id="window_app" shininess="0.2" textureref="windowtexture" >
+               <component type="ambient" value="0.5 0.5 0.5 0.5" />
+               <component type="diffuse" value="0.5 0.5 0.5 0.5" />
+               <component type="specular" value="0.5 0.5 0.5 0.5" />
+        </appearance>
+        <appearance id="window_edge_app" shininess="0.2" textureref="windowedgetexture" >
+               <component type="ambient" value="0.5 0.5 0.5 0.5" />
+               <component type="diffuse" value="0.5 0.5 0.5 0.5" />
+               <component type="specular" value="0.5 0.5 0.5 0.5" />
+        </appearance>
+        <appearance id="door_app" shininess="0.2" textureref="doortexture" >
+               <component type="ambient" value="0.5 0.5 0.5 0.5" />
+               <component type="diffuse" value="0.5 0.5 0.5 0.5" />
+               <component type="specular" value="0.5 0.5 0.5 0.5" />
+        </appearance>
+        <appearance id="door_edge_app" shininess="0.2" textureref="dooredgetexture" >
+               <component type="ambient" value="0.5 0.5 0.5 0.5" />
+               <component type="diffuse" value="0.5 0.5 0.5 0.5" />
+               <component type="specular" value="0.5 0.5 0.5 0.5" />
+        </appearance>
+        <appearance id="roof_app" shininess="0.2" textureref="rooftexture" >
+               <component type="ambient" value="0.5 0.5 0.5 0.5" />
+               <component type="diffuse" value="0.5 0.5 0.5 0.5" />
+               <component type="specular" value="0.5 0.5 0.5 0.5" />
+        </appearance>
+    </appearances>
+
+    <graph rootid="house">
+        <node id="house">
+            <transforms>
+            </transforms>
+            <appearanceref id="base_app" />
+            <primitives>
+             </primitives>
+            <descendants>
+                <noderef id="roof" />
+                <noderef id="top" />
+                <noderef id="walls" />
+                <noderef id="base" />
+            </descendants>
+        </node>
+        <node id="base">
+            <transforms>
+            </transforms>
+            <appearanceref id="base_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="frontbase" />
+                <noderef id="rightbase" />
+                <noderef id="backbase" />
+                <noderef id="leftbase" />
+            </descendants>
+        </node>
+        <node id="leftbase">
+            <transforms>
+                <transform type="translate" to="20.0 0.0 0.0"/>
+                <transform type="rotate" axis="y" angle="180.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="20.0 1.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="backbase">
+            <transforms>
+                <transform type="translate" to="20.0 0.0 15.0"/>
+                <transform type="rotate" axis="y" angle="90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="15.0 1.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="rightbase">
+            <transforms>
+                <transform type="translate" to="0.0 0.0 15.0"/>
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="20.0 1.0" />
+            </primitives>
+            <descendants>
+                <noderef id="stairs" />
+            </descendants>
+        </node>
+        <node id="stairs">
+            <transforms>
+                <transform type="translate" to="8.0 0.0 0.0"/>
+            </transforms>
+            <appearanceref id="stairs_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="frontstairs" />
+                <noderef id="rightstairs" />
+                <noderef id="leftstairs" />
+            </descendants>
+        </node>
+        <node id="frontstairs">
+            <transforms>
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="frontstairs1" />
+                <noderef id="frontstairs2" />
+                <noderef id="frontstairs3" />
+                <noderef id="frontstairs4" />
+            </descendants>
+        </node>
+        <node id="frontstairs1">
+            <transforms>
+                <transform type="translate" to="0.0 0.0 2.0"/>
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="4.0 0.5" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="frontstairs2">
+            <transforms>
+                <transform type="translate" to="0.0 0.5 2.0"/>
+                <transform type="rotate" axis="x" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="4.0 1.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="frontstairs3">
+            <transforms>
+                <transform type="translate" to="0.0 0.5 1.0"/>
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="4.0 0.5" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="frontstairs4">
+            <transforms>
+                <transform type="translate" to="0.0 1.0 1.0"/>
+                <transform type="rotate" axis="x" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="4.0 1.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="rightstairs">
+            <transforms>
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="rightstairs_top" />
+                <noderef id="rightstairs_bottom" />
+            </descendants>
+        </node>
+        <node id="rightstairs_bottom">
+            <transforms>
+                <transform type="translate" to="4.0 0.0 2.0"/>
+                <transform type="rotate" axis="y" angle="90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="2.0 0.5" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="rightstairs_top">
+            <transforms>
+                <transform type="translate" to="4.0 0.5 1.0"/>
+                <transform type="rotate" axis="y" angle="90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="1.0 0.5" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="leftstairs">
+            <transforms>
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="leftstairs_top" />
+                <noderef id="leftstairs_bottom" />
+            </descendants>
+        </node>
+        <node id="leftstairs_bottom">
+            <transforms>
+                <transform type="rotate" axis="y" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="2.0 0.5" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="leftstairs_top">
+            <transforms>
+                <transform type="translate" to="0.0 0.5 0.0"/>
+                <transform type="rotate" axis="y" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="1.0 0.5" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="frontbase">
+            <transforms>
+                <transform type="rotate" axis="y" angle="-90.0" />    
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="15.0 1.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="walls">
+            <transforms>
+            </transforms>
+            <appearanceref id="walls_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="frontwall" />
+                <noderef id="rightwall" />
+                <noderef id="backwall" />
+                <noderef id="leftwall" />
+            </descendants>
+        </node>
+        <node id="leftwall">
+            <transforms>
+                <transform type="translate" to="20.0 1.0 0.0"/>
+                <transform type="rotate" axis="y" angle="180.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="20.0 7.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="backwall">
+            <transforms>
+                <transform type="translate" to="20.0 1.0 15.0"/>
+                <transform type="rotate" axis="y" angle="90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="15.0 7.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node> 
+        <node id="rightwall">
+            <transforms>
+                <transform type="translate" to="0.0 1.0 15.0"/>
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="20.0 7.0" />
+            </primitives>
+            <descendants>
+                <noderef id="door" />
+                <noderef id="rightwindow" />
+                <noderef id="leftwindow" />
+            </descendants>
+        </node>
+        <node id="leftwindow">
+            <transforms>
+                <transform type="translate" to="1.5 3.0 0.0"/>
+            </transforms>
+            <appearanceref id="window_edge_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="topwindowpart" />
+                <noderef id="rightwindowpart" />
+                <noderef id="bottomwindowpart" />
+                <noderef id="leftwindowpart" />
+                <noderef id="frontwindowpart" />
+            </descendants>
+        </node>
+        <node id="rightwindow">
+            <transforms>
+                <transform type="translate" to="13.5 3.0 0.0"/>
+            </transforms>
+            <appearanceref id="window_edge_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="topwindowpart" />
+                <noderef id="rightwindowpart" />
+                <noderef id="bottomwindowpart" />
+                <noderef id="leftwindowpart" />
+                <noderef id="frontwindowpart" />
+            </descendants>
+        </node>
+        <node id="frontwindowpart">
+            <transforms>
+                <transform type="translate" to="0.0 0.0 0.2"/>
+            </transforms>
+            <appearanceref id="window_app" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="5.0 3.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="leftwindowpart">
+            <transforms>
+                <transform type="translate" to="0.0 0.0 0.2"/>
+                <transform type="rotate" axis="z" angle="90.0" />                
+                <transform type="rotate" axis="x" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="3.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="bottomwindowpart">
+            <transforms>
+                <transform type="rotate" axis="x" angle="90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="5.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="rightwindowpart">
+            <transforms>
+                <transform type="translate" to="5.0 0.0 0.0"/>
+                <transform type="rotate" axis="z" angle="90.0" />
+                <transform type="rotate" axis="x" angle="90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="3.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="topwindowpart">
+            <transforms>
+                <transform type="translate" to="0.0 3.0 0.2"/>
+                <transform type="rotate" axis="x" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="5.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>  
+        <node id="door">
+            <transforms>
+                <transform type="translate" to="8.5 0.0 0.0"/>
+            </transforms>
+            <appearanceref id="door_edge_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="topdoor" />
+                <noderef id="rightdoor" />
+                <noderef id="leftdoor" />
+                <noderef id="frontdoor" />
+            </descendants>
+        </node>
+        <node id="frontdoor">
+            <transforms>
+                <transform type="translate" to="0.0 0.0 0.2"/>
+            </transforms>
+            <appearanceref id="door_app" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="3.0 6.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="leftdoor">
+            <transforms>
+                <transform type="translate" to="0.0 0.0 0.2"/>
+                <transform type="rotate" axis="z" angle="90.0" />                
+                <transform type="rotate" axis="x" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="6.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="rightdoor">
+            <transforms>
+                <transform type="translate" to="3.0 0.0 0.0"/>
+                <transform type="rotate" axis="z" angle="90.0" />
+                <transform type="rotate" axis="x" angle="90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="6.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>   
+        <node id="topdoor">
+            <transforms>
+                <transform type="translate" to="0.0 6.0 0.2"/>
+                <transform type="rotate" axis="x" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="3.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="frontwall">
+            <transforms>
+                <transform type="translate" to="0.0 1.0 0.0"/>
+                <transform type="rotate" axis="y" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="15.0 7.0" />
+            </primitives>
+            <descendants>
+                <noderef id="rightfrontwindow" />
+                <noderef id="leftfrontwindow" />
+            </descendants>
+        </node>
+        <node id="leftfrontwindow">
+            <transforms>
+                <transform type="translate" to="1.0 3.0 0.0"/>
+            </transforms>
+            <appearanceref id="window_edge_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="topwindowpart" />
+                <noderef id="rightwindowpart" />
+                <noderef id="bottomwindowpart" />
+                <noderef id="leftwindowpart" />
+                <noderef id="frontwindowpart" />
+            </descendants>
+        </node>
+        <node id="rightfrontwindow">
+            <transforms>
+                <transform type="translate" to="9.0 3.0 0.0"/>
+            </transforms>
+            <appearanceref id="window_edge_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="topwindowpart" />
+                <noderef id="rightwindowpart" />
+                <noderef id="bottomwindowpart" />
+                <noderef id="leftwindowpart" />
+                <noderef id="frontwindowpart" />
+            </descendants>
+        </node>
+        <node id="top">
+            <transforms>
+            </transforms>
+            <appearanceref id="walls_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="topfront" />
+                <noderef id="topback" />
+            </descendants>
+        </node>
+        <node id="topback">
+            <transforms>
+                <transform type="translate" to="20.0 8.0 15.0"/>
+                <transform type="rotate" axis="y" angle="90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <triangle xyz1="0.0 0.0 0.0" xyz2="15.0 0.0 0.0" xyz3="7.5 7.0 0.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="topfront">
+            <transforms>
+                <transform type="translate" to="0.0 8.0 0.0"/>
+                <transform type="rotate" axis="y" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <triangle xyz1="0.0 0.0 0.0" xyz2="15.0 0.0 0.0" xyz3="7.5 7.0 0.0" />
+            </primitives>
+            <descendants>
+                <noderef id="topwindow" />
+            </descendants>
+        </node>
+        <node id="topwindow">
+            <transforms>
+                <transform type="translate" to="6.0 1.0 0.0"/>
+            </transforms>
+            <appearanceref id="window_edge_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="topwindowtoppart" />
+                <noderef id="rightwindowtoppart" />
+                <noderef id="bottomwindowtoppart" />
+                <noderef id="leftwindowtoppart" />
+                <noderef id="frontwindowtoppart" />
+            </descendants>
+        </node>
+        <node id="frontwindowtoppart">
+            <transforms>
+                <transform type="translate" to="0.0 0.0 0.2"/>
+            </transforms>
+            <appearanceref id="window_app" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="3.0 4.0" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="leftwindowtoppart">
+            <transforms>
+                <transform type="translate" to="0.0 0.0 0.2"/>
+                <transform type="rotate" axis="z" angle="90.0" />                
+                <transform type="rotate" axis="x" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="4.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="bottomwindowtoppart">
+            <transforms>
+                <transform type="rotate" axis="x" angle="90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="3.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="rightwindowtoppart">
+            <transforms>
+                <transform type="translate" to="3.0 0.0 0.0"/>
+                <transform type="rotate" axis="z" angle="90.0" />
+                <transform type="rotate" axis="x" angle="90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="4.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="topwindowtoppart">
+            <transforms>
+                <transform type="translate" to="0.0 4.0 0.2"/>
+                <transform type="rotate" axis="x" angle="-90.0" />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="3.0 0.2" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="roof">
+            <transforms>
+            </transforms>
+            <appearanceref id="roof_app" />
+            <primitives>
+            </primitives>
+            <descendants>
+                <noderef id="rightroof" />
+                <noderef id="leftroof" />
+            </descendants>
+        </node>
+        <node id="leftroof">
+            <transforms>
+                <transform type="translate" to="20.0 8.0 0.0"/>
+                <transform type="rotate" axis="y" angle="180.0" />
+                <transform type="rotate" axis="x" angle="-46.96"  />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="20.0 10.3" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>
+        <node id="rightroof">
+            <transforms>
+                <transform type="translate" to="0.0 8.0 15.0"/>
+                <transform type="rotate" axis="x" angle="-46.96"  />
+            </transforms>
+            <appearanceref id="inherit" />
+            <primitives>
+                <rectangle xy1="0.0 0.0" xy2="20.0 10.3" />
+            </primitives>
+            <descendants>
+            </descendants>
+        </node>  
+    </graph>
+</anf>
